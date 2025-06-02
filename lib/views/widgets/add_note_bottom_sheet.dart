@@ -8,30 +8,35 @@ class AddNoteBottomSheet extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
+    return AnimatedPadding(
+      duration: const Duration(milliseconds: 300),
+      curve: Curves.easeOut,
       padding: EdgeInsets.only(
-        left: 16.0,
+        left: 16,
         right: 16,
         bottom: MediaQuery.of(context).viewInsets.bottom,
+        top: 24,
       ),
       child: SingleChildScrollView(
         child: Column(
+          mainAxisSize: MainAxisSize.min, // important to fit to content
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(height: 15),
+            const SizedBox(height: 15),
             CustomTextFormField(
               text: 'Note Title',
               maxLines: 1,
               inputType: TextInputType.text,
             ),
-            SizedBox(height: 15),
+            const SizedBox(height: 15),
             CustomTextFormField(
               text: 'Content',
               inputType: TextInputType.text,
               maxLines: 5,
             ),
-            SizedBox(height: 32),
-            GeneralButton(text: 'Add ', onTap: () {}),
-            SizedBox(height: 30),
+            const SizedBox(height: 32),
+            GeneralButton(text: 'Add', onTap: () {}),
+            const SizedBox(height: 30),
           ],
         ),
       ),
