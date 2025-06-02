@@ -7,16 +7,20 @@ class NotesListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return ListView.builder(
-      physics: BouncingScrollPhysics(),
-      itemBuilder: (context, index) {
-        final color = noteColor[index % noteColor.length];
-        return Padding(
-          padding: const EdgeInsets.symmetric(vertical: 4.0),
-          child: NoteItem(color: color),
-        );
-      },
-      itemCount: 10,
+    return Padding(
+      padding: const EdgeInsets.symmetric(vertical: 16.0),
+      child: ListView.builder(
+        padding: EdgeInsets.zero,
+        physics: BouncingScrollPhysics(),
+        itemBuilder: (context, index) {
+          final color = noteColor[index % noteColor.length];
+          return Padding(
+            padding: const EdgeInsets.symmetric(vertical: 4.0),
+            child: NoteItem(color: color),
+          );
+        },
+        itemCount: 10,
+      ),
     );
   }
 }
