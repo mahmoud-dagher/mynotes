@@ -1,7 +1,7 @@
 // ignore_for_file: unused_import
 
 import 'package:flutter/material.dart';
-import 'package:my_notes/views/widgets/custom_app_bar.dart';
+import 'package:my_notes/shared/components/custom_app_bar.dart';
 import 'package:my_notes/views/widgets/note_item.dart';
 import 'package:my_notes/views/widgets/notes_list_view_.dart';
 
@@ -15,7 +15,7 @@ class NotesViewBody extends StatelessWidget {
       child: Column(
         children: [
           SizedBox(height: 50),
-          CustomAppBar(),
+          CustomAppBar(title: 'Notes', icon: Icons.search),
           Expanded(child: NotesListView()),
         ],
       ),
