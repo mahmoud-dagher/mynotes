@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_notes/constants/colors.dart';
+import 'package:my_notes/constants/constants.dart';
 import 'package:my_notes/views/widgets/note_item.dart';
 
 class NotesListView extends StatelessWidget {

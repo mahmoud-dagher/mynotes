@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:my_notes/constants/colors.dart';
+import 'package:my_notes/constants/constants.dart';
 import 'package:my_notes/models/size_config/size_config.dart';
 import 'package:my_notes/models/size_config/space_widget.dart';
 
