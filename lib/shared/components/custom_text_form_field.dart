@@ -17,7 +17,7 @@ class CustomTextFormField extends StatelessWidget {
   final IconData? suffixICon;
   final IconData? prefixIcon;
   final TextInputType? inputType;
-  final FormFieldSetter<String>? onSaved;
+  final void Function(String?)? onSaved;
   final ValueSetter<String>? onChanged;
   final int? maxLines;
 
@@ -30,6 +30,13 @@ class CustomTextFormField extends StatelessWidget {
         key: text != null ? Key(text!) : null,
         keyboardType: inputType,
         onSaved: onSaved,
+        validator: (value) {
+          if (value?.isEmpty ?? true) {
+            return 'Field is required';
+          } else {
+            return null;
+          }
+        },
         onChanged: onChanged,
         maxLines: maxLines,
         style: const TextStyle(overflow: TextOverflow.ellipsis),

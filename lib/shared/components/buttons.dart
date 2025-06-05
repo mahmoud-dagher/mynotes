@@ -6,7 +6,7 @@ import 'package:my_notes/models/size_config/space_widget.dart';
 class GeneralButton extends StatelessWidget {
   const GeneralButton({super.key, this.text, required this.onTap});
   final String? text;
-  final VoidCallback? onTap;
+  final void Function()? onTap;
 
   @override
   Widget build(BuildContext context) {
