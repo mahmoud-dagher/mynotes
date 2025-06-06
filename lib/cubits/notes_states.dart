@@ -7,6 +7,7 @@ class NotesInitial extends NotesStates {}
 class NotesLoading extends NotesStates {}
 
 // add notes
+class AddNotesLoading extends NotesStates {}
 
 class AddNotesSuccess extends NotesStates {}
 
@@ -17,6 +18,7 @@ class AddNotesFail extends NotesStates {
 }
 
 // read notes
+class ReadNotesLoading extends NotesStates {}
 
 class ReadNotesSuccess extends NotesStates {}
 
@@ -27,6 +29,7 @@ class ReadNotesFail extends NotesStates {
 }
 
 // deleteNOtes
+class DeleteNotesLoading extends NotesStates {}
 
 class DeleteNOtesSuccess extends NotesStates {}
 
