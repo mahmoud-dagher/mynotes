@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+
 import 'package:my_notes/constants/constants.dart';
+
 import 'package:my_notes/views/widgets/note_item.dart';
 
 class NotesListView extends StatelessWidget {
@@ -19,7 +21,7 @@ class NotesListView extends StatelessWidget {
             child: NoteItem(color: color),
           );
         },
-        itemCount: 10,
+        itemCount: 10, // Get the count from Hive box
       ),
     );
   }

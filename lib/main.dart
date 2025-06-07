@@ -19,8 +19,9 @@ void main() async {
   } catch (e) {
     print('Hive initialization failed: $e');
   }
-  await Hive.openBox(notesBox);
   Hive.registerAdapter(NoteModelAdapter());
+  await Hive.openBox<NoteModel>(notesBox);
+
   Bloc.observer = SimpleBlocObserver();
   runApp(const NotesApp());
 }

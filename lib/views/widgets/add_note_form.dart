@@ -1,4 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:my_notes/constants/constants.dart';
+import 'package:my_notes/cubits/add_notes_cubit.dart';
+import 'package:my_notes/models/note_model/note_model.dart';
 import 'package:my_notes/shared/components/buttons.dart';
 import 'package:my_notes/shared/components/custom_text_form_field.dart';
 
@@ -11,6 +15,7 @@ class AddNoteForm extends StatefulWidget {
 
 class _AddNoteFormState extends State<AddNoteForm> {
   final GlobalKey<FormState> formKey = GlobalKey();
+
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
   String? title, subTitle;
 
@@ -57,6 +62,16 @@ class _AddNoteFormState extends State<AddNoteForm> {
                 onTap: () {
                   if (formKey.currentState!.validate()) {
                     formKey.currentState!.save();
+                    var noteModel = NoteModel(
+                      title: title!,
+                      subTitle: subTitle!,
+                      date: DateTime.now().toString(),
+                      color: noteColor.length,
+                    );
+                    BlocProvider.of<AddNotesCubit>(
+                      context,
+                      listen: false,
+                    ).addNote(noteModel);
                   } else {
                     autovalidateMode = AutovalidateMode.always;
                     setState(() {});
