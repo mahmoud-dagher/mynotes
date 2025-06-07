@@ -1,8 +1,10 @@
 // ignore_for_file: avoid_print
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:hive_flutter/adapters.dart';
+import 'package:my_notes/bloc_observer/bloc_observer.dart';
 import 'package:my_notes/constants/constants.dart';
 
 import 'package:my_notes/models/note_model/note_model.dart';
@@ -19,7 +21,7 @@ void main() async {
   }
   await Hive.openBox(notesBox);
   Hive.registerAdapter(NoteModelAdapter());
-
+  Bloc.observer = SimpleBlocObserver();
   runApp(const NotesApp());
 }
 
