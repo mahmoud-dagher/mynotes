@@ -4,9 +4,15 @@ import 'package:my_notes/models/size_config/size_config.dart';
 import 'package:my_notes/models/size_config/space_widget.dart';
 
 class GeneralButton extends StatelessWidget {
-  const GeneralButton({super.key, this.text, required this.onTap});
+  const GeneralButton({
+    super.key,
+    this.text,
+    required this.onTap,
+    this.isLoading = false,
+  });
   final String? text;
   final void Function()? onTap;
+  final bool isLoading;
 
   @override
   Widget build(BuildContext context) {
@@ -23,14 +29,20 @@ class GeneralButton extends StatelessWidget {
           ),
 
           child: Center(
-            child: Text(
-              text!,
-              style: TextStyle(
-                fontSize: 20.0,
-                fontWeight: FontWeight.bold,
-                color: mainColor,
-              ),
-            ),
+            child: isLoading
+                ? SizedBox(
+                    height: 24,
+                    width: 24,
+                    child: const CircularProgressIndicator(color: mainColor),
+                  )
+                : Text(
+                    text!,
+                    style: TextStyle(
+                      fontSize: 20.0,
+                      fontWeight: FontWeight.bold,
+                      color: mainColor,
+                    ),
+                  ),
           ),
         ),
       ),
