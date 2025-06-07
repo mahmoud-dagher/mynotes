@@ -1,6 +1,6 @@
 import 'package:hive/hive.dart';
 import 'package:my_notes/constants/constants.dart';
-import 'package:my_notes/cubits/notes_states.dart';
+import 'package:my_notes/cubits/add_notes/add_notes_states.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:my_notes/models/note_model/note_model.dart';
 

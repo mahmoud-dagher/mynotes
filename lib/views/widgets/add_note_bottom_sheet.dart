@@ -3,8 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:my_notes/cubits/add_notes_cubit.dart';
-import 'package:my_notes/cubits/notes_states.dart';
+import 'package:my_notes/cubits/add_notes/add_notes_cubit.dart';
+import 'package:my_notes/cubits/add_notes/add_notes_states.dart';
 
 import 'package:my_notes/views/widgets/add_note_form.dart';
 
