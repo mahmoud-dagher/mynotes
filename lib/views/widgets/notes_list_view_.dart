@@ -1,6 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 import 'package:my_notes/constants/constants.dart';
+import 'package:my_notes/cubits/fetch_notes/fetch_notes_cubit.dart';
+import 'package:my_notes/cubits/fetch_notes/fetch_notes_states.dart';
+import 'package:my_notes/models/note_model/note_model.dart';
 
 import 'package:my_notes/views/widgets/note_item.dart';
 
@@ -9,20 +13,26 @@ class NotesListView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(vertical: 16.0),
-      child: ListView.builder(
-        padding: EdgeInsets.zero,
-        physics: BouncingScrollPhysics(),
-        itemBuilder: (context, index) {
-          final color = noteColor[index % noteColor.length];
-          return Padding(
-            padding: const EdgeInsets.symmetric(vertical: 4.0),
-            child: NoteItem(color: color),
-          );
-        },
-        itemCount: 10, // Get the count from Hive box
-      ),
+    return BlocBuilder<FetchNotesCubit, FetchNotesStates>(
+      builder: (context, state) {
+        List<NoteModel> notes =
+            BlocProvider.of<FetchNotesCubit>(context).notes ?? [];
+        return Padding(
+          padding: const EdgeInsets.symmetric(vertical: 16.0),
+          child: ListView.builder(
+            padding: EdgeInsets.zero,
+            physics: BouncingScrollPhysics(),
+            itemBuilder: (context, index) {
+              final color = noteColor[index % noteColor.length];
+              return Padding(
+                padding: const EdgeInsets.symmetric(vertical: 4.0),
+                child: NoteItem(color: color),
+              );
+            },
+            itemCount: notes.length, // Get the count from Hive box
+          ),
+        );
+      },
     );
   }
 }
