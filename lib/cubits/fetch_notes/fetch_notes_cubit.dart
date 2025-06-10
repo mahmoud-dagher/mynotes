@@ -13,6 +13,6 @@ class FetchNotesCubit extends Cubit<FetchNotesStates> {
     var box = Hive.box<NoteModel>(notesBox);
 
     notes = box.values.toList();
-    emit(FetchNotesSuccess(notes!));
+    emit(FetchNotesSuccess());
   }
 }

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'package:my_notes/constants/constants.dart';
 import 'package:my_notes/cubits/fetch_notes/fetch_notes_cubit.dart';
 import 'package:my_notes/cubits/fetch_notes/fetch_notes_states.dart';
 import 'package:my_notes/models/note_model/note_model.dart';
@@ -23,10 +22,9 @@ class NotesListView extends StatelessWidget {
             padding: EdgeInsets.zero,
             physics: BouncingScrollPhysics(),
             itemBuilder: (context, index) {
-              final color = noteColor[index % noteColor.length];
               return Padding(
                 padding: const EdgeInsets.symmetric(vertical: 4.0),
-                child: NoteItem(color: color),
+                child: NoteItem(note: notes[index]),
               );
             },
             itemCount: notes.length, // Get the count from Hive box

@@ -11,5 +11,6 @@ const List<Color> noteColor = [
 ];
 
 const Color primaryColor = Color(0xff62FCD7);
+const Color tempColor = Color(0xFFffa930);
 
 const notesBox = 'notes_box';
