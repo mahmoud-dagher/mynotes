@@ -4,6 +4,8 @@ import 'package:my_notes/constants/constants.dart';
 import 'package:my_notes/cubits/fetch_notes/fetch_notes_states.dart';
 import 'package:my_notes/models/note_model/note_model.dart';
 
+import 'package:flutter/widgets.dart';
+
 class FetchNotesCubit extends Cubit<FetchNotesStates> {
   FetchNotesCubit() : super(FetchNoteInitial());
 
@@ -15,4 +17,9 @@ class FetchNotesCubit extends Cubit<FetchNotesStates> {
     notes = box.values.toList();
     emit(FetchNotesSuccess());
   }
+}
+
+// refresh display function
+void refreshDisplay(BuildContext context) {
+  BlocProvider.of<FetchNotesCubit>(context).fetchAllNOtes();
 }

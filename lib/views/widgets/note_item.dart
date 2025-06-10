@@ -1,7 +1,7 @@
 // ignore_for_file: deprecated_member_use
 
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:my_notes/constants/constants.dart';
 import 'package:my_notes/cubits/fetch_notes/fetch_notes_cubit.dart';
@@ -20,7 +20,7 @@ class NoteItem extends StatelessWidget {
           context,
           MaterialPageRoute(
             builder: (context) {
-              return const NotesEditView();
+              return NotesEditView(note: note);
             },
           ),
         );
@@ -42,7 +42,7 @@ class NoteItem extends StatelessWidget {
               subtitle: Padding(
                 padding: const EdgeInsets.only(top: 16, bottom: 16),
                 child: Text(
-                  note.subTitle!,
+                  note.content!,
                   style: TextStyle(
                     color: Colors.black.withOpacity(.5),
                     fontSize: 18,
@@ -52,7 +52,7 @@ class NoteItem extends StatelessWidget {
               trailing: IconButton(
                 onPressed: () {
                   note.delete();
-                  BlocProvider.of<FetchNotesCubit>(context).fetchAllNOtes();
+                  refreshDisplay(context);
                 },
                 icon: FaIcon(FontAwesomeIcons.trash),
                 color: Colors.black,

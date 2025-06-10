@@ -5,21 +5,23 @@ class CustomTextFormField extends StatelessWidget {
   const CustomTextFormField({
     super.key,
     required this.text,
-    this.suffixICon,
+    this.suffixIcon,
     this.prefixIcon,
     required this.inputType,
     this.onSaved,
     this.onChanged,
     this.maxLines,
+    this.useFloatingLabel = true, // Default to floating label behavior
   });
 
   final String? text;
-  final IconData? suffixICon;
+  final IconData? suffixIcon;
   final IconData? prefixIcon;
   final TextInputType? inputType;
   final void Function(String?)? onSaved;
   final ValueSetter<String>? onChanged;
   final int? maxLines;
+  final bool useFloatingLabel;
 
   @override
   Widget build(BuildContext context) {
@@ -40,25 +42,22 @@ class CustomTextFormField extends StatelessWidget {
         onChanged: onChanged,
         maxLines: maxLines,
         style: const TextStyle(overflow: TextOverflow.ellipsis),
-
         decoration: InputDecoration(
           border: buildBorder(),
           enabledBorder: buildBorder(),
           focusedBorder: buildBorder(primaryColor),
-          labelText: text,
+          labelText: useFloatingLabel ? text : null, // Use labelText for floating label
+          hintText: useFloatingLabel ? null : text, // Use hintText for static hint
           labelStyle: TextStyle(color: primaryColor),
-
-          // hintText: text,
-          // hintStyle: TextStyle(color: primaryColor),
+          hintStyle: TextStyle(color: primaryColor.withOpacity(0.6)),
           prefixIcon: prefixIcon != null ? Icon(prefixIcon) : null,
-          suffixIcon: suffixICon != null ? Icon(suffixICon) : null,
+          suffixIcon: suffixIcon != null ? Icon(suffixIcon) : null,
         ),
       ),
     );
   }
 
-  // ignore: strict_top_level_inference
-  OutlineInputBorder buildBorder([color]) {
+  OutlineInputBorder buildBorder([Color? color]) {
     return OutlineInputBorder(
       borderRadius: BorderRadius.circular(8),
       borderSide: BorderSide(color: color ?? Colors.white),

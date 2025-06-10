@@ -20,7 +20,7 @@ class _AddNoteFormState extends State<AddNoteForm> {
   final GlobalKey<FormState> formKey = GlobalKey();
 
   AutovalidateMode autovalidateMode = AutovalidateMode.disabled;
-  String? title, subTitle;
+  String? title, content;
 
   @override
   Widget build(BuildContext context) {
@@ -54,7 +54,7 @@ class _AddNoteFormState extends State<AddNoteForm> {
               CustomTextFormField(
                 text: 'Content',
                 onSaved: (value) {
-                  subTitle = value;
+                  content = value;
                 },
                 inputType: TextInputType.text,
                 maxLines: 5,
@@ -72,17 +72,17 @@ class _AddNoteFormState extends State<AddNoteForm> {
                         formKey.currentState!.save();
                         var noteModel = NoteModel(
                           title: title!,
-                          subTitle: subTitle!,
+                          content: content!,
                           date: dateString,
+                          // ignore: deprecated_member_use
                           color: Colors.blue.value,
                         );
                         BlocProvider.of<AddNotesCubit>(
                           context,
                           listen: false,
                         ).addNote(noteModel);
-                        BlocProvider.of<FetchNotesCubit>(
-                          context,
-                        ).fetchAllNOtes();
+
+                        refreshDisplay(context);
                       } else {
                         autovalidateMode = AutovalidateMode.always;
                         setState(() {});
