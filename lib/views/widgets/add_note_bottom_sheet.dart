@@ -26,7 +26,7 @@ class AddNoteBottomSheet extends StatelessWidget {
           }
         },
         builder: (context, state) {
-          return AbsorbPointer(
+          return const AbsorbPointer(
             absorbing: State is AddNoteBottomSheet ? true : false,
             child: SingleChildScrollView(child: AddNoteForm()),
           );

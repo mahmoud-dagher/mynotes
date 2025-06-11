@@ -8,6 +8,7 @@ import 'package:my_notes/cubits/fetch_notes/fetch_notes_cubit.dart';
 import 'package:my_notes/models/note_model/note_model.dart';
 import 'package:my_notes/shared/components/buttons.dart';
 import 'package:my_notes/shared/components/custom_text_form_field.dart';
+import 'package:my_notes/views/widgets/colors_list_view.dart';
 
 class AddNoteForm extends StatefulWidget {
   const AddNoteForm({super.key});
@@ -59,7 +60,9 @@ class _AddNoteFormState extends State<AddNoteForm> {
                 inputType: TextInputType.text,
                 maxLines: 5,
               ),
-              const SizedBox(height: 32),
+              const SizedBox(height: 16),
+              const ColorsListView(),
+              const SizedBox(height: 16),
               BlocBuilder<AddNotesCubit, NotesStates>(
                 builder: (context, state) {
                   return GeneralButton(

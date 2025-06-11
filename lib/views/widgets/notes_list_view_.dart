@@ -20,7 +20,7 @@ class NotesListView extends StatelessWidget {
           padding: const EdgeInsets.symmetric(vertical: 16.0),
           child: ListView.builder(
             padding: EdgeInsets.zero,
-            physics: BouncingScrollPhysics(),
+            physics: const BouncingScrollPhysics(),
             itemBuilder: (context, index) {
               return Padding(
                 padding: const EdgeInsets.symmetric(vertical: 4.0),

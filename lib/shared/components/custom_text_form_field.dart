@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 import 'package:my_notes/constants/constants.dart';
 
@@ -46,9 +48,13 @@ class CustomTextFormField extends StatelessWidget {
           border: buildBorder(),
           enabledBorder: buildBorder(),
           focusedBorder: buildBorder(primaryColor),
-          labelText: useFloatingLabel ? text : null, // Use labelText for floating label
-          hintText: useFloatingLabel ? null : text, // Use hintText for static hint
-          labelStyle: TextStyle(color: primaryColor),
+          labelText: useFloatingLabel
+              ? text
+              : null, // Use labelText for floating label
+          hintText: useFloatingLabel
+              ? null
+              : text, // Use hintText for static hint
+          labelStyle: const TextStyle(color: primaryColor),
           hintStyle: TextStyle(color: primaryColor.withOpacity(0.6)),
           prefixIcon: prefixIcon != null ? Icon(prefixIcon) : null,
           suffixIcon: suffixIcon != null ? Icon(suffixIcon) : null,

@@ -30,14 +30,14 @@ class GeneralButton extends StatelessWidget {
 
           child: Center(
             child: isLoading
-                ? SizedBox(
+                ? const SizedBox(
                     height: 24,
                     width: 24,
-                    child: const CircularProgressIndicator(color: mainColor),
+                    child: CircularProgressIndicator(color: mainColor),
                   )
                 : Text(
                     text!,
-                    style: TextStyle(
+                    style: const TextStyle(
                       fontSize: 20.0,
                       fontWeight: FontWeight.bold,
                       color: mainColor,
@@ -73,19 +73,19 @@ class CustomIconButton extends StatelessWidget {
           decoration: BoxDecoration(
             color: Colors.transparent,
             borderRadius: BorderRadius.circular(10),
-            border: Border.all(color: Color(0xff077070)),
+            border: Border.all(color: const Color(0xff077070)),
           ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Icon(icon, color: iconColor),
-              HorizontalSpace(1),
+              const HorizontalSpace(1),
               Text(
                 text!,
-                style: TextStyle(
+                style: const TextStyle(
                   fontWeight: FontWeight.w600,
                   fontSize: 12,
-                  color: const Color(0xff000000),
+                  color: Color(0xff000000),
                 ),
                 textAlign: TextAlign.left,
               ),
